@@ -6,8 +6,6 @@ class AboutPage extends React.Component {
     return (
       <div className="jumbotron">
         <h1>AM is a writer</h1>
-      <p>links and stuff</p>
-    <Link to="home" className="btn btn-primary btn-lg">Home</Link>
       </div>
     );
   }
