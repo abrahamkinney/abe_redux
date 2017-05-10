@@ -4,13 +4,16 @@ import App from './components/App';
 import HomePage from './components/home/HomePage';
 import AboutPage from './components/about/AboutPage';
 import EventsPage from './components/events/EventsPage';
-console.log("routes");
+import ManageEventPage from './components/events/ManageEventPage';
+
 
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={HomePage} />
     <Route path="home" component={HomePage} />
-    <Route path="about" component={AboutPage} />
     <Route path="events" component={EventsPage} />
+    <Route path="event" component={ManageEventPage} />
+    <Route path="event/:id" component={ManageEventPage} />
+    <Route path="about" component={AboutPage} />
   </Route>
 );
