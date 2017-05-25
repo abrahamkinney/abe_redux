@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as eventActions from '../../actions/eventActions';
-import * as EventForm from './EventForm';
+import EventForm from './EventForm';
 
 class ManageEventPage extends React.Component {
   constructor(props, context) {
@@ -10,20 +10,17 @@ class ManageEventPage extends React.Component {
 
     this.state = {
       event: Object.assign({}, this.props.event),
-      error: {}
+      errors: {}
     };
   }
 
   render() {
     return (
-      <div>
-        <h1>Manage Event</h1>
-        <EventForm
-          allAuthors={[]}
-          event={this.state.event}
-          errors={this.state.errors}
-        />
-      </div>
+      <EventForm
+        allAuthors={[]}
+        event={this.state.event}
+        errors={this.state.errors}
+      />
     );
   }
 }
