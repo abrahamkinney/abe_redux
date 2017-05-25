@@ -17,7 +17,7 @@ class ManageEventPage extends React.Component {
   render() {
     return (
       <EventForm
-        allAuthors={[]}
+        allAuthors={this.props.authors}
         event={this.state.event}
         errors={this.state.errors}
       />
@@ -25,14 +25,24 @@ class ManageEventPage extends React.Component {
   }
 }
 
-ManageEventPage.PropTypes = {
-  event: PropTypes.object.isRequired
+ManageEventPage.propTypes = {
+  event: PropTypes.object.isRequired,
+  authors: PropTypes.array.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   let event = {id: '', watchHref: '', title: '', authorID: '', length: '', category: ''};
+
+  const authorsFormattedForDropdown = state.authors.map(author => {
+    return {
+      value: author.id,
+      text: author.firstName + ' ' + author.lastName
+    };
+  });
+
   return {
-    event: event
+    event: event,
+    authors: authorsFormattedForDropdown
   };
 }
 
