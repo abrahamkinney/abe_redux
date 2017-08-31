@@ -39,7 +39,7 @@ const EventForm = ({event, allAuthors, onSave, onChange, loading, errors}) => {
       <input
         name="submit"
         disabled={loading}
-        value={loading ? 'Saving . . . ' : 'Save'}
+        value={loading ? 'Saving . . . ' : 'Ssssave'}
         className="btn btn-primary"
         onChange={onSave}/>
     </form>
