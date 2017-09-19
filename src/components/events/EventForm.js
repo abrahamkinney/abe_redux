@@ -41,7 +41,7 @@ const EventForm = ({event, allAuthors, onSave, onChange, loading, errors}) => {
         disabled={loading}
         value={loading ? 'Saving . . . ' : 'Ssssave'}
         className="btn btn-primary"
-        onChange={onSave}/>
+        onClick={onSave}/>
     </form>
   );
 };
