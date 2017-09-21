@@ -39,7 +39,7 @@ const EventForm = ({event, allAuthors, onSave, onChange, saving, errors}) => {
       <input
         name="submit"
         disabled={saving}
-        defaultValue={saving ? 'Saving . . . ' : 'Save'}
+        defaultValue={saving ? 'Saving...' : 'Save'}
         className="btn btn-primary"
         onClick={onSave}/>
     </form>
