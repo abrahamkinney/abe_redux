@@ -1,5 +1,6 @@
 import * as types from './actionTypes';
 import eventApi from '../api/mockEventApi';
+import {beginAjaxCall, ajaxCallError} from './ajaxStatusActions';
 
 export function loadEventsSuccess(events) {
   return { type: types.LOAD_EVENTS_SUCCESS, events};
@@ -15,6 +16,7 @@ export function updateEventSuccess(event) {
 
 export function loadEvents() {
   return function(dispatch) {
+    dispatch(beginAjaxCall());
     return eventApi.getAllEvents().then(events => {
       dispatch(loadEventsSuccess(events));
     }).catch(error => {
@@ -24,12 +26,13 @@ export function loadEvents() {
 }
 
 export function saveEvent(event) {
-  console.log("actions")
   return function (dispatch, getState) {
+    dispatch(beginAjaxCall());
     return eventApi.saveEvent(event).then(savedEvent => {
       event.id ? dispatch(updateEventSuccess(savedEvent)) :
         dispatch(createEventSuccess(savedEvent));
     }).catch(error => {
+      dispatch(ajaxCallError(error));
       throw(error);
     });
   };

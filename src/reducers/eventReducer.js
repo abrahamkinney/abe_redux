@@ -7,8 +7,7 @@ export default function eventReducer(state = initialState.events, action) {
       return action.events;
 
     case types.CREATE_EVENT_SUCCESS:
-      console.log("here");
-      return [
+       return [
         ...state,
         Object.assign({}, action.event)
       ];
