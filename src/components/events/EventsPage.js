@@ -37,7 +37,7 @@ class EventsPage extends React.Component {
 }
 
 EventsPage.propTypes = {
-  events: PropTypes.array.isRequired,
+  events: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired
 };
 

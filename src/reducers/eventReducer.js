@@ -3,7 +3,17 @@ import initialState from './initialState';
 
 export default function eventReducer(state = initialState.events, action) {
   switch (action.type) {
-    case types.LOAD_EVENTS_SUCCESS:
+    // case types.LOAD_EVENTS_SUCCESS:
+    //   return action.events;
+    case types.GET_EVENT_REQUESTED:
+    console.log("ACTION: ",action)
+    console.log("STATE: ",state)
+      return action.events;
+
+    case types.GET_EVENT_REJECTED:
+      return action.events;
+
+    case types.GET_EVENT_FULFILLED:
       return action.events;
 
     case types.CREATE_EVENT_SUCCESS:

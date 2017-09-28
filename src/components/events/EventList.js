@@ -14,16 +14,14 @@ const EventList = ({events}) => {
         </tr>
       </thead>
       <tbody>
-      {events.map(event =>
-        <EventListRow key={event.id} event={event}/>
-      )}
+        {events}
       </tbody>
     </table>
   );
 };
 
 EventList.propTypes = {
-  events: PropTypes.array.isRequired
+  events: PropTypes.object.isRequired
 };
 
 export default EventList;
