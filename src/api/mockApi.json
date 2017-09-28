@@ -1,0 +1,58 @@
+{
+  "authors" : {
+      "anne-marie-kinney": {
+        "firstName": "Anne-Marie",
+        "lastName": "House"
+      },
+      "abe-kinney": {
+        "firstName": "Abe",
+        "lastName": "Kinney"
+      },
+      "dan-wahlin": {
+        "firstName": "Dan",
+        "lastName": "Wahlin"
+      }
+  },
+  "events": {
+    "react-flux-building-applications": {
+      "title": "Building Applications in React and Flux",
+      "link": "http://www.pluralsight.com/courses/react-flux-building-applications",
+      "authorId": "anne-marie-kinney",
+      "time": "7pm",
+      "date": "September 13th",
+      "category": "Reading"
+    },
+    "clean-code": {
+      "title": "Clean Code: Writing Code for Humans",
+      "link": "http://www.pluralsight.com/courses/writing-clean-code-humans",
+      "authorId": "anne-marie-kinney",
+      "time": "7pm",
+      "date": "September 13th",
+      "category": "Book Launch"
+    },
+    "architecture": {
+      "title": "Architecting Applications for the Real World",
+      "link": "http://www.pluralsight.com/courses/architecting-applications-dotnet",
+      "authorId": "abe-kinney",
+      "time": "7pm",
+      "date": "September 13th",
+      "category": "Reading"
+    },
+    "career-reboot-for-developer-mind": {
+      "title": "Becoming an Outlier: Reprogramming the Developer Mind",
+      "link": "http://www.pluralsight.com/courses/career-reboot-for-developer-mind",
+      "authorId": "anne-marie-kinney",
+      "time": "7pm",
+      "date": "September 13th",
+      "category": "Reading"
+    },
+    "web-components-shadow-dom": {
+      "title": "Web Component Fundamentals",
+      "link": "http://www.pluralsight.com/courses/web-components-shadow-dom",
+      "authorId": "abe-kinney",
+      "time": "7pm",
+      "date": "September 13th",
+      "category": "Reading"
+    }
+  }
+}

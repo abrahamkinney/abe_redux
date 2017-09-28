@@ -5,7 +5,7 @@ import * as eventActions from '../../actions/eventActions';
 import EventForm from './EventForm';
 import toastr from 'toastr';
 
-class ManageEventPage extends React.Component {
+export class ManageEventPage extends React.Component {
   constructor(props, context) {
     super(props, context);
 
