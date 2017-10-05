@@ -1,0 +1,93 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    name: loot-guardian
+  name: loot-guardian
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        name: loot-guardian
+    spec:
+      containers:
+      - image: gcr.io/lootcrate-production/guardian-image:latest
+        name: loot-guardian-backend
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+          name: http-server
+        env:
+        # - name: AWS_ACCESS_KEY_ID
+        #   value: production
+        # - name: AWS_SECRET_ACCESS_KEY
+          # value: production
+        - name: RAILS_ENV
+          value: production
+        # - name: SECRET_KEY_BASE
+        #   value: 79c739950e6a0e971f34731555072e3936a8df95373033a981bd7b57ee12eed8
+        # - name: JWT_EXPIRY
+        #   value: "86400"
+        # - name: JWT_LEEWAY
+        #   value: "60"
+        # - name: AWS_BUCKET
+        #   value: loot-guardian
+        # - name: AWS_REGION
+        #   value: us-west-2
+        # - name: AWS_URL
+        #   value: https://loot-guardian.s3-us-west-2.amazonaws.com
+        # - name: CLOUDFRONT_URL
+        #   value: http://d145wk31mne520.cloudfront.net
+        # - name: LCID_API_URI
+        #   value: https://lootcrate-production.appspot.com/
+        # - name: SECRET_KEY_BASE
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: loot-guardian-env-vars
+        #       key: SECRET_KEY_BASE
+        # - name: MANDRILL_API_KEY
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: loot-guardian-env-vars
+        #       key: MANDRILL_API_KEY
+        # - name: JWT_SECRET
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: loot-guardian-env-vars
+        #       key: JWT_SECRET
+        # - name: AWS_SECRET_ACCESS_KEY
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: loot-guardian-env-vars
+        #       key: AWS_SECRET_ACCESS_KEY
+        # - name: MYSQL_DB_PASSWORD
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: cloudsql-db-credentials
+        #       key: password
+        # - name: MYSQL_DB_USER
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: cloudsql-db-credentials
+        #       key: username
+      - image: b.gcr.io/cloudsql-docker/gce-proxy:1.05
+        name: cloudsql-proxy
+        command: ["/cloud_sql_proxy", "--dir=/cloudsql",
+                  "-instances=lootcrate-production:us-central1:loot-guardian-pg-db-prod=tcp:5432",
+                  "-credential_file=/secrets/cloudsql/credentials.json"]
+        volumeMounts:
+          - name: cloudsql-oauth-credentials
+            mountPath: /secrets/cloudsql
+            readOnly: true
+          - name: ssl-certs
+            mountPath: /etc/ssl/certs
+      imagePullSecrets:
+        - name: myregistrykey
+      volumes:
+        - name: cloudsql-oauth-credentials
+          secret:
+            secretName: cloudsql-instance-credentials
+        - name: ssl-certs
+          hostPath:
+            path: /etc/ssl/certs
